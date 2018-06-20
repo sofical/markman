@@ -1,0 +1,31 @@
+{
+  "manifest_version": 2,
+  "name": "Mark-Man",
+  "version": "0.0.1",
+  "description": "mark tool for developer",
+  "background": { "scripts": ["background.js"],"persistent": true },
+  "content_security_policy": "script-src 'self'; connect-src *; img-src *; frame-src *; media-src *; style-src * 'unsafe-inline'; font-src *; object-src 'self'",
+  "page_action": {
+    "default_icon" : "customer_service_16px.png",
+    "default_title": "Mark-Main"
+  },
+  "icons" : {
+    "16": "customer_service_16px.png",
+    "32": "customer_service_32px.png"
+  },
+  "permissions" : [
+    "tabs",
+    "declarativeContent",
+    "notifications",
+    "webRequest",
+    "contextMenus",
+    "http://*/*",
+    "https://*/*"
+  ],
+  "content_scripts":[{
+    "matches":["<all_urls>"],
+    "run_at": "document_end",
+    "js":["jquery-3.3.1.min.js", "main.js"],
+    "all_frames" : true
+  }]
+}
